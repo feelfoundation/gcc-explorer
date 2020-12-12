@@ -1,0 +1,79 @@
+<!--
+/*
+ * feelfoundation/gcc-explorer
+ * Copyright © 2018 Feel Foundation
+ *
+ * See the LICENSE file at the top-level directory of this distribution
+ * for licensing information.
+ *
+ * Unless otherwise agreed in a custom licensing agreement with the Feel Foundation,
+ * no part of this software, including this file, may be copied, modified,
+ * propagated, or distributed except according to the terms contained in the
+ * LICENSE file.
+ *
+ * Removal or modification of this copyright notice is prohibited.
+ *
+ */
+-->
+<div class="navbar navbar-default navbar-fixed-top" role='navigation'>
+	<nav class="main-header">
+		<div class="container fadein">
+			<div id="header" role="navigation" class="navbar navbar-default">
+				<div class="logo-wrapper">
+					<a href="/">
+						<figure class="logo" title="Feel">
+							<img src="web-logo.png">
+						</figure>
+						<!-- <span class="nethash text-center" ng-if="showNethash(blockStatus.nethash | nethash)">{{blockStatus.nethash | nethash}}</span> -->
+						<span class="nethash text-center">GCC</span>
+					</a>
+				</div>
+				<span class="hidden-xs">
+					<button type="button" class="navbar-toggle" data-ng-click="$root.isCollapsed = !$root.isCollapsed">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<search class="visible-xs mobile-search" mobile-view="true" />
+					<div class="navbar-collapse main-menu" data-ng-class="{collapse: $root.isCollapsed}">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/txs/" class="transaction-browser hidden-sm">Transactions</a></li>
+							<li><a href="/blocks/" class="block-browser hidden-sm">Blocks</a></li>
+							<li><a href="/delegateMonitor" class="delegate-monitor hidden-sm hidden-md">Delegates</a></li>
+							<li><a href="/networkMonitor" class="network-monitor hidden-sm hidden-md">Network</a></li>
+							<navigation-dropdown />
+						</ul>
+					</div>
+				</span>
+				<span class="visible-xs">
+					<button type="button" class="navbar-toggle" data-ng-click="$root.isCollapsed = !$root.isCollapsed">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<search class="visible-xs mobile-search" mobile-view="true" />
+					<div class="navbar-collapse main-menu mobile-menu" data-ng-class="{collapse: $root.isCollapsed}">
+						<ul class="nav navbar-nav navbar-right">
+							<navigation-dropdown />
+							<currency-selector />
+							<rounding-selector />
+						</ul>
+					</div>
+				</span>
+				<search class="hidden-xs desktop-search" />
+			</div>
+		</div>
+	</nav>
+	<nav class="network-status" data-ng-class="{'socket-disconnected': !connected}">
+		<div class="container fadein">
+			<div class="flex-container">
+				<span class="height"><b>Height:</b> {{blockStatus.height | number:0}}</span>
+				<span class="supply"><b>Supply:</b> {{blockStatus.supply | feel | number:0}}</span>
+				<!--span class="feel-btc"><b>GCC/BTC:</b> {{currency.tickers.GCC.BTC || 'N/A'}}</span>
+				<span class="feel-usd"><b>GCC/{{currency.tickers.GCC[currency.symbol] && currency.symbol !== 'BTC' ? currency.symbol : 'USD'}}:</b> {{currency.tickers.GCC[currency.symbol] && currency.symbol !== 'BTC' ? (currency.tickers.GCC[currency.symbol] | number:4) : (currency.tickers.GCC.USD | number:4) || 'N/A'}}</span-->
+			</div>
+		</div>
+	</nav>
+</div>
