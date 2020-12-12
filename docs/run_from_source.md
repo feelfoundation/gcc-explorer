@@ -5,39 +5,15 @@ Before installing from source a proper development environment has to be install
 - [Linux Prerequisites](prerequisites-linux.md)
 - [MacOS Prerequisites](prerequisites-macos.md)
 
-Clone the Feel Explorer Repository:
+Clone the GCC Explorer Repository:
 
 ```
 git clone https://github.com/feelfoundation/gcc-explorer.git
 cd gcc-explorer
 ```
 
-## Build Steps
 
-The NPM and Bower tools install all JavaScript dependencies needed to run the Feel Explorer.
-
-```
-npm install
-```
-
-The frontend is using Webpack to create core bundles for Feel Explorer.
-For generating the minified bundles in production environment run:
-
-```
-npm run build
-```
-
-This step makes the source code ready for running.
-
-#### Market Watcher (candlestick data)
-
-Candlestick data needs to be initialized prior to starting Feel Explorer. This step writes data to the local Redis instance. Make sure that your application is already deployed and has access to the production Redis database.
-
-To build candlestick data for each exchange run:
-
-`grunt candles:build`
-
-## Managing Feel Explorer
+## Managing GCC Explorer
 
 To test that Feel Explorer is configured correctly, use the following commands:
 
