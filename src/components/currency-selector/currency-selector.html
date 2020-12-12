@@ -1,0 +1,45 @@
+<!--
+/*
+ * feelfoundation/gcc-explorer
+ * Copyright © 2018 Feel Foundation
+ *
+ * See the LICENSE file at the top-level directory of this distribution
+ * for licensing information.
+ *
+ * Unless otherwise agreed in a custom licensing agreement with the Feel Foundation,
+ * no part of this software, including this file, may be copied, modified,
+ * propagated, or distributed except according to the terms contained in the
+ * LICENSE file.
+ *
+ * Removal or modification of this copyright notice is prohibited.
+ *
+ */
+-->
+<li class="dropdown" data-uib-dropdown>
+	<a class="dropdown-toggle GCC-menu" id="main-currency-selector" data-uib-dropdown-toggle data-aria-haspopup="true" role="button" data-aria-expanded="false">
+		<span class="visible-xs">Currency&nbsp;<span class="caret"></span></span>
+		<span class="hidden-xs"><strong>{{currency.symbol}}</strong>&nbsp;<span class="caret"></span></span>
+	</a>
+	<ul class="dropdown-menu dropdown-menu-right currency-selector" role="menu" data-aria-labelledby="main-currency-selector">
+		<li ng-class="key">
+			<a data-ng-click="cs.setCurrency('GCC')"
+			data-ng-class="{active: currency-code.symbol == 'GCC'}" class="GCC">
+				<span class="currency-name">{{'GCC' | currencyCodeToName}}</span>
+				<span class="currency-code">GCC</span>
+			</a>
+		</li>
+
+		<span data-ng-repeat-start="(tickerGroup, groupCodes) in tickers"></span>
+		<li data-ng-if="groupCodes.length > 0" role="separator" class="divider hidden-xs" style="clear:both;"></li>
+		<li data-ng-if="groupCodes.length > 0" class="dropdown-header" style="clear:both;">{{tickerGroup}}</li>
+
+		<li data-ng-repeat="ticker in groupCodes" ng-class="key">
+			<a data-ng-click="cs.setCurrency(ticker.code)"
+			data-ng-class="{active: currency-code.symbol == {{ticker.code}}}" class="{{ticker.code}}">
+				<span class="currency-name">{{ticker.code | currencyCodeToName}}</span>
+				<span class="currency-code">{{ticker.code}}</span>
+			</a>
+		</li>
+		<span data-ng-repeat-end></span>
+	</ul>
+</li>
