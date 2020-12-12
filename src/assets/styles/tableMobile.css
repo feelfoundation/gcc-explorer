@@ -1,0 +1,78 @@
+/*
+ * feelfoundation/gcc-explorer
+ * Copyright © 2018 Feel Foundation
+ *
+ * See the LICENSE file at the top-level directory of this distribution
+ * for licensing information.
+ *
+ * Unless otherwise agreed in a custom licensing agreement with the Feel Foundation,
+ * no part of this software, including this file, may be copied, modified,
+ * propagated, or distributed except according to the terms contained in the
+ * LICENSE file.
+ *
+ * Removal or modification of this copyright notice is prohibited.
+ *
+ */
+#table-mobile .txvalues {
+	width: 100%;
+}
+
+/* Override bootstrap settings at <=320px */
+#table-mobile td:first-of-type {
+    max-width: inherit;
+}
+
+
+@media only screen and (max-width: 767px) {
+    
+    /* Force table to not be like tables anymore */
+	#table-mobile table, 
+	#table-mobile thead, 
+	#table-mobile tbody, 
+	#table-mobile th, 
+	#table-mobile td, 
+	#table-mobile tr { 
+		display: block;
+		padding: 5px 0;
+	}
+ 
+	/* Hide table headers (but not display: none;, for accessibility) */
+	#table-mobile thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	#table-mobile td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 40%;
+		padding-right: 8px;
+		padding-top: 0;
+		padding-bottom: 0;
+		white-space: normal;
+		text-align:left;
+	}
+ 
+	#table-mobile td:before { 
+		/* Now like a table header */
+		position: absolute;
+		left: 12px;
+		width: 35%;
+		padding-right: 10px;
+		white-space: nowrap;
+		text-align:left;
+		font-weight: bold;
+	}
+	
+	#table-mobile .txvalues {
+		width: inherit;
+	}
+ 
+	/* Label the data */
+	#table-mobile td:before {
+		content: attr(data-title);
+	}
+}
