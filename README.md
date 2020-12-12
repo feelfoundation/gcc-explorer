@@ -2,7 +2,7 @@
 
 # GCC Explorer
 
-GCC Explorer is a blockchain explorer designed for interaction with Feel network. It is a part of [GCC Ecosystem], a blockchain platform based on DPoS consensus protocol.
+GCC Explorer is a blockchain explorer designed for interaction with GCC network. It is a part of [Feel Ecosystem], a blockchain platform based on DPoS consensus protocol.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
