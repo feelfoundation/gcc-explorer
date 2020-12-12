@@ -1,8 +1,8 @@
 ![Logo](./docs/assets/banner_explorer.png)
 
-# Feel Explorer
+# GCC Explorer
 
-Feel Explorer is a blockchain explorer designed for interaction with Feel network. It is a part of [Feel Ecosystem](https://feel.surf), a blockchain platform based on DPoS consensus protocol.
+GCC Explorer is a blockchain explorer designed for interaction with Feel network. It is a part of [Feel Ecosystem](https://feel.surf), a blockchain platform based on DPoS consensus protocol.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
@@ -29,11 +29,11 @@ Feel Explorer is a feature-rich single page browser application with following f
   - Shows active and disconnected nodes
   - Public IPs are shown with domain names and geographical location
 
-To make it running at least one Feel Core/SDK node with public API is needed.
+To make it running at least one GCC Core/SDK node with public API is needed.
 
 ## Installation
 
-Clone the Feel Explorer Repository:
+Clone the GCC Explorer Repository:
 
 ```
 git clone https://github.com/feelfoundation/gcc-explorer.git
