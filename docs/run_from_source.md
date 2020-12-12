@@ -43,7 +43,7 @@ To test that Feel Explorer is configured correctly, use the following commands:
 
 ```
 npm run start          // default config based on environment variables
-npm run start:local    // connect with localhost:4500
+npm run start:local    // connect with localhost:18500
 npm run start:testnet  // connect with testnet
 npm run start:mainnet  // connect with mainnet
 ```
