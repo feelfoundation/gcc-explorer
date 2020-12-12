@@ -1,0 +1,38 @@
+version: "3"
+services:
+
+  gcc-explorer:
+    image: feel/explorer:latest
+    depends_on:
+      - explorer-cache
+    networks:
+      - gcc-explorer
+    restart: on-failure
+    environment:
+      - FEEL_URL_HTTP=${EXPLORER_FEEL_HTTP_URL}
+      - FEEL_URL_WS=${EXPLORER_FEEL_WS_URL}
+      - REDIS_HOST=explorer-cache
+      - FREEGEOIP_URL=https://geoip.feel.surf
+      - ENABLE_MARKET_FEATURES=true
+
+  explorer-cache:
+    image: redis:alpine
+    networks:
+      - gcc-explorer
+    restart: on-failure
+
+  explorer-cache-candles:
+    image: feel/explorer:latest
+    depends_on:
+      - explorer-cache
+    networks:
+      - gcc-explorer
+    environment:
+      - REDIS_HOST=explorer-cache
+    command: ./node_modules/grunt-cli/bin/grunt candles:build
+
+
+networks:
+  gcc-explorer:
+
+
