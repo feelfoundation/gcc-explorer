@@ -1,4 +1,4 @@
-# Run Feel Explorer from Source
+# Run GCC Explorer from Source
 
 Before installing from source a proper development environment has to be installed and configured.
 
