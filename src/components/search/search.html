@@ -1,0 +1,42 @@
+<!--
+/*
+ * feelfoundation/gcc-explorer
+ * Copyright © 2018 Feel Foundation
+ *
+ * See the LICENSE file at the top-level directory of this distribution
+ * for licensing information.
+ *
+ * Unless otherwise agreed in a custom licensing agreement with the Feel Foundation,
+ * no part of this software, including this file, may be copied, modified,
+ * propagated, or distributed except according to the terms contained in the
+ * LICENSE file.
+ *
+ * Removal or modification of this copyright notice is prohibited.
+ *
+ */
+-->
+<form role="search" data-ng-submit="sch.search()" data-ng-class="{'loading': sch.loading, 'active': !sch.mobileView || sch.activeForm}" class='search-box'>
+	<div class="wrapper" data-ng-class="{'has-error': sch.badQuery}">
+		<input id="search" type="text" class="input search" data-ng-model="sch.q" placeholder="Find a transaction, address, delegate or block"
+			data-ng-submit="sch.search()" data-ng-blur="sch.hideSuggestion()" autocomplete="off" autocapitalize="none" />
+		<span class="glyphicon" aria-hidden="true" data-ng-mousedown="sch.onSearchIconClick()" data-ng-class="{'glyphicon-remove': sch.mobileView && sch.activeForm, 'glyphicon-search': !sch.mobileView || !sch.activeForm}"></span>
+		<div class="search-suggestion-list list-group"
+			ng-if="sch.showingResults && sch.results">
+			<a href="/{{result.type}}/{{result.id}}" class="search-suggestion-item list-group-item list-group-item-action flex-column align-items-start"
+				ng-repeat="result in sch.results" ng-class="result.accuracy === 1 ? 'match' : ''">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">{{result.id}}</h5>
+					<small ng-if='result.accuracy === 1'>Matching result</small>
+				</div>
+				<p class="mb-1">{{result.description || 'No additional info'}}<small class="pull-right">{{result.type}}</small></p>
+			</a>
+			<span class="arrow"></span>
+		</div>
+		<div class="not-found text-danger"
+			data-ng-if="sch.badQuery">
+			<h5 class="empty-result-title">No matching records found!</h5>
+			<p>If you are searching for an address, it might be not initialized yet.</p>
+			<span class="arrow"></span>
+		</div>
+	</div>
+</form>
