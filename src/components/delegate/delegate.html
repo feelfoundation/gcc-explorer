@@ -1,0 +1,74 @@
+<!--
+/*
+ * feelfoundation/gcc-explorer
+ * Copyright © 2018 Feel Foundation
+ *
+ * See the LICENSE file at the top-level directory of this distribution
+ * for licensing information.
+ *
+ * Unless otherwise agreed in a custom licensing agreement with the Feel Foundation,
+ * no part of this software, including this file, may be copied, modified,
+ * propagated, or distributed except according to the terms contained in the
+ * LICENSE file.
+ *
+ * Removal or modification of this copyright notice is prohibited.
+ *
+ */
+-->
+<section>
+	<h1>Delegate summary</h1>
+
+	<div class="row horizontal-padding-xs horizontal-padding-s horizontal-padding-m horizontal-padding-l">
+		<p>Visit the <a href="/address/{{ vm.address.delegate.address }}">address page</a> to see more delegate details.</p>
+	</div>
+
+	<div class="delegate">
+		<div class="row">
+				<div class="col-md-7 col-lg-8">
+					<div class="table-responsive">
+						<table class="table summary">
+							<tbody>
+								<tr>
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l double"><strong>Name</strong></td>
+									<td class="right-padding-xs right-padding-s right-padding-m right-padding-l double text-right">
+										<a href="/address/{{vm.address.delegate.address}}">{{vm.address.delegate.username}}</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l double"><strong>Address</strong></td>
+									<td class="right-padding-xs right-padding-s right-padding-m right-padding-l double text-right">
+										<a href="/address/{{vm.address.address}}">{{vm.address.address}}</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l double"><strong>Uptime</strong></td>
+									<td class="right-padding-xs right-padding-s right-padding-m right-padding-l double text-right">{{vm.address.delegate.productivity || 0.00}}%</td>
+								</tr>
+								<tr>
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l double"><strong>Rank / Status</strong></td>
+									<td class="right-padding-xs right-padding-s right-padding-m right-padding-l double text-right">{{vm.address.delegate.rate}} / <span class="text-muted">{{(vm.address.delegate.rate &lt;= 101) ? 'Active' : 'Standby'}}</span></td>
+								</tr>
+								<tr>
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l double"><strong>Approval</strong></td>
+									<td class="right-padding-xs right-padding-s right-padding-m right-padding-l double text-right">{{vm.address.delegate.approval}}%</td>
+								</tr>
+								<tr>
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l double"><strong>Vote weight</strong></td>
+									<td class="right-padding-xs right-padding-s right-padding-m right-padding-l double text-right">{{vm.address.delegate.vote || 0 | currency:$root.currency:$root.decimalPlaces}} <span class="text-muted">{{$root.currency.symbol}}</span></td>
+								</tr>
+								<tr>
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l double"><strong>Forged</strong></td>
+									<td class="right-padding-xs right-padding-s right-padding-m right-padding-l double text-right">{{vm.address.delegate.forged || 0 | currency:$root.currency:$root.decimalPlaces}} <span class="text-muted">{{$root.currency.symbol}}</span></td>
+								</tr>
+								<tr>
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l double"><strong>Blocks</strong></td>
+									<td class="right-padding-xs right-padding-s right-padding-m right-padding-l double text-right">{{vm.address.delegate.producedblocks}} <span class="text-muted">({{vm.address.delegate.missedblocks}} missed)</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
