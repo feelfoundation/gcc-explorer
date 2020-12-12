@@ -83,10 +83,7 @@ The test suite is described in [Run Tests](/docs/run_tests.md) section.
 |                           |                                                                                                                                  |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | Found a bug               | [Create new issue](https://github.com/feelfoundation/gcc-explorer/issues/new)                                                           |
-| Want to develop with us   | [Read Contribution Guidelines](https://github.com/feelfoundation/gcc-explorer/blob/development/docs/CONTRIBUTING.md)                    |
-| Have ideas to share       | [Come to Feel.chat](http://feel.chat)                                                                                            |
-| Want to involve community | [Join community gitter](https://gitter.im/feelfoundation/feel?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
-| Found a security issue    | [See our bounty program](https://blog.feel.surf/announcing-feel-bug-bounty-program-5895bdd46ed4)                                   |
+| Want to develop with us   | [Read Contribution Guidelines](https://github.com/feelfoundation/gcc-explorer/blob/development/docs/CONTRIBUTING.md)                    |           
 
 ## Contributors
 
