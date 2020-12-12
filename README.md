@@ -8,23 +8,23 @@ GCC Explorer is a blockchain explorer designed for interaction with Feel network
 
 Feel Explorer is a feature-rich single page browser application with following functionalities:
 
-- [Transaction browser](https://explorer.feel.surf/txs/)
+- [Transaction browser](http://gcce.feel.surf/txs/)
   - Shows transactions with their details stored in the blockchain
   - Supports all transaction types with its metadata
   - Allows advanced filtering by date, type, amount etc.
 
-- [Block browser](https://explorer.feel.surf/blocks/)
+- [Block browser](http://gcce.feel.surf/blocks/)
   - Shows blocks with their details stored in the blockchain
 
-- [Account browser](https://explorer.feel.surf/address/6307579970857064486L)
+- [Account browser](http://gcce.feel.surf/address/6307579970857064486L)
   - Supports various account types
   - Allows advanced transaction filtering on per-account basis
 
-- [Delegate monitor](https://explorer.feel.surf/delegateMonitor)
+- [Delegate monitor](http://gcce.feel.surf/delegateMonitor)
   - Shows information about all register delegate accounts
   - Live status of the 101 active delegates
 
-- [Network monitor](https://explorer.feel.surf/networkMonitor)
+- [Network monitor](http://gcce.feel.surf/networkMonitor)
   - Shows live information about all nodes
   - Shows active and disconnected nodes
   - Public IPs are shown with domain names and geographical location
