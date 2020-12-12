@@ -1,4 +1,4 @@
-# Feel Explorer Test Suite
+# GCC Explorer Test Suite
 
 ## Functional Tests
 
