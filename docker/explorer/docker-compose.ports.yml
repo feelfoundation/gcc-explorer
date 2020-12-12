@@ -1,0 +1,14 @@
+version: "3"
+# Add your custom configuration here.
+# See README.md for examples.
+services:
+
+  gcc-explorer:
+    ports:
+      - "127.0.0.1:16540:16540"
+    networks:
+      - localhost
+
+networks:
+  localhost:
+    external: true
