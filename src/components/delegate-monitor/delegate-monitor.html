@@ -1,0 +1,310 @@
+<!--
+/*
+ * feelfoundation/gcc-explorer
+ * Copyright © 2018 Feel Foundation
+ *
+ * See the LICENSE file at the top-level directory of this distribution
+ * for licensing information.
+ *
+ * Unless otherwise agreed in a custom licensing agreement with the Feel Foundation,
+ * no part of this software, including this file, may be copied, modified,
+ * propagated, or distributed except according to the terms contained in the
+ * LICENSE file.
+ *
+ * Removal or modification of this copyright notice is prohibited.
+ *
+ */
+-->
+<div>
+	<h1>
+		Delegate Monitor
+		<br />
+		<small><span>{{vm.totalActive || 0}} active delegates</span></small>
+	</h1>
+	<div class="container-fluid big-info">
+		<div class="delegate-monitor-top row equal">
+			<div class="col-xs-6 col-sm-3">
+				<div class="pull-left delegates">
+					<p class="small-title">Delegates</p>
+					<p class="big-details">
+						<span class="total-delegates">{{vm.totalDelegates || 0}}</span>
+					</p>
+					<p class="text-muted total-active">{{vm.totalActive || 0}} active delegates</p>
+					<p class="text-muted total-standby">{{vm.totalStandby || 0}} delegates on standby</p>
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<div class="pull-left total-forged">
+					<p class="small-title">Total Forged <span class="text-muted">({{$root.currency.symbol}})</span></p>
+					<p class="big-details">
+						<span class="feel">{{vm.totalForged || 0 | currency:$root.currency:vm.decimalPlaceCrypto:vm.decimalPlaceFiat}}</span>
+					</p>
+					<p class="text-muted total-active">between {{vm.totalActive || 0 }} active delegates</p>
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<div class="pull-left last-block">
+					<p class="small-title">Last Block By</p>
+					<p class="big-details" data-ng-switch="!!vm.lastBlock">
+						<a data-account-href="vm.lastBlock.delegate" data-type="delegate" data-ng-switch-when="true">{{vm.lastBlock.delegate.username | middleEllipsis:15}}</a>
+						<span class="text-muted" data-ng-switch-when="false">N/A</span>
+					</p>
+					<p class="text-muted" data-ng-switch="!!vm.lastBlock">
+						<a data-ng-href="/block/{{vm.lastBlock.id}}" data-ng-switch-when="true">{{vm.lastBlock.id}}</a>
+						<span class="text-muted" data-ng-switch-when="false">N/A</span>
+					</p>
+					<p class="text-muted">
+						<span class="feel">{{vm.lastBlock.totalForged || 0 | currency:$root.currency:$root.decimalPlaces}} {{$root.currency.symbol}} forged</span>
+						<span class="num-trans">from {{vm.lastBlock.numberOfTransactions || 0}} transactions</span>
+					</p>
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<div class="pull-left next-forgers">
+					<p class="small-title">Next Forgers</p>
+					<div>
+						<div data-ng-if="!vm.nextForgers || vm.nextForgers.length === 0">
+							<span>Waiting for next forgers <i class="fa fa-spinner fa-spin"></i></span>
+						</div>
+						<span data-ng-repeat='v in vm.nextForgers track by $index'>
+							<div data-ng-if="$first">
+								<p class="big-details">
+									<a data-account-href="v" data-type="delegate">{{v.username | middleEllipsis:15}}</a>
+								</p>
+							</div>
+							<span data-ng-if="!$first">
+								<a data-account-href="v" data-type="delegate">{{v.username}}</a>
+								<span data-ng-if="!$last" class="text-muted">&bull;</span>
+							</span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<div class="pull-left best-productivity">
+					<p class="small-title">Best Productivity</p>
+					<p class="big-details">{{vm.bestProductivity.productivity || 0}}%</p>
+					<p data-ng-switch="!!vm.bestProductivity">
+						<span class="text-muted">by</span>
+						<a data-account-href="vm.bestProductivity" data-type="delegate" data-ng-switch-when="true">{{vm.bestProductivity.username}}</a>
+						<span class="text-muted" data-ng-switch-when="false">N/A</span>
+					</p>
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<div class="pull-left worst-productivity">
+					<p class="small-title">Worst Productivity</p>
+					<p class="big-details">{{vm.worstProductivity.productivity || 0}}%</p>
+					<p data-ng-switch="!!vm.worstProductivity">
+						<span class="text-muted">by</span>
+						<a data-account-href="vm.worstProductivity" data-type="delegate" data-ng-switch-when="true">{{vm.worstProductivity.username}}</a>
+						<span class="text-muted" data-ng-switch-when="false">N/A</span>
+					</p>
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<div class="pull-left best-forger">
+					<p class="small-title">Best Forger</p>
+					<p class="big-details" data-ng-switch="!!vm.bestForger">
+						<a data-account-href="vm.bestForger" data-type="delegate" data-ng-switch-when="true">{{vm.bestForger.username}}</a>
+						<span class="text-muted" data-ng-switch-when="false">N/A</span>
+					</p>
+					<p class="text-muted feel">{{vm.bestForger.forged || 0 | currency:$root.currency:$root.decimalPlaces}} {{$root.currency.symbol}} forged</p>
+					<p class="text-muted time-since">since registration</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 big-info">
+			<uib-tabset>
+				<uib-tab>
+					<uib-tab-heading><span class="glyphicon glyphicon-play hidden-xs"></span> Active<span class="hidden-xs"> Delegates</span> <span class="badge badge-delegate">{{vm.totalActive || 0}}</span></uib-tab-heading>
+					<div class="row forging-totals horizontal-padding-xs horizontal-padding-s horizontal-padding-m horizontal-padding-l">
+						<div class="col-xs-6 col-sm-3">
+							<div class="forging-total green">
+								<p class="big-details">{{vm.forgingTotals.forging || 0}}</p>
+								<span>Forged block recently</span>
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-3">
+							<div class="forging-total orange">
+								<p class="big-details">{{vm.forgingTotals.missedBlock || 0}}</p>
+								<span>Missed block recently</span>
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-3">
+							<div class="forging-total red">
+								<p class="big-details">{{vm.forgingTotals.notForging || 0}}</p>
+								<span>Not forging</span>
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-3">
+							<div class="forging-total grey">
+								<p class="big-details">{{vm.forgingTotals.awaitingSlot || 0}}</p>
+								<span>In queue for forging</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row forging-progress horizontal-padding-xs horizontal-padding-s horizontal-padding-m horizontal-padding-l" data-ng-if="vm.forgingProgress">
+						<div class="col-xs-12">
+							<uib-progressbar max="101" type="forging" value="vm.forgingTotals.processed" data-ng-class="{'progress-striped active': vm.forgingTotals.processed < 101,'inactive': vm.forgingTotals.processed == 101}">
+								<p data-ng-if="vm.forgingTotals.processed > 5">
+									<span>{{vm.forgingTotals.processed || 0}} / 101</span>
+									<span data-ng-if="vm.forgingTotals.processed < 101"><i class="fa fa-cog"></i> Updated</span>
+									<span data-ng-if="vm.forgingTotals.processed == 101"><i class="fa fa-check-square"></i> Update-to-date</span>
+								</p>
+							</uib-progressbar>
+						</div>
+					</div>
+
+					<div class="table-responsive">
+						<table class="table table-hover table-striped active-delegates">
+							<thead>
+								<tr>
+									<th class="left-padding-xs left-padding-s left-padding-m left-padding-l double"><a href="" data-ng-click="vm.tables.active.setPredicate('rate')" class="sort-order">Rank <span data-ng-show="vm.tables.active.predicate === 'rate'" data-ng-class="{reverse: vm.tables.active.reverse}"></span></a></th>
+									<th><a href="" data-ng-click="vm.tables.active.setPredicate('username')" class="sort-order">Name <span data-ng-show="vm.tables.active.predicate === 'username'" data-ng-class="{reverse: vm.tables.active.reverse}"></span></a></th>
+									<th class="hidden-xs hidden-md"><a href="" data-ng-click="vm.tables.active.setPredicate('address')" class="sort-order">Address <span data-ng-show="vm.tables.active.predicate === 'address'" data-ng-class="{reverse: vm.tables.active.reverse}"></span></a></th>
+									<th class="hidden-xs hidden-sm"><a href="" data-ng-click="vm.tables.active.setPredicate('forged')" class="sort-order">Forged <span data-ng-show="vm.tables.active.predicate === 'forged'" data-ng-class="{reverse: vm.tables.active.reverse}"></span></a></th>
+									<th class="hidden-xs hidden-sm"><a href="" data-ng-click="vm.tables.active.setPredicate('forgingTime')" class="sort-order">Forging time <span data-ng-show="vm.tables.active.predicate === 'forgingTime'" data-ng-class="{reverse: vm.tables.active.reverse}"></span></a></th>
+									<th><a href="" data-ng-click="vm.tables.active.setPredicate('status')" class="sort-order">Status <span data-ng-show="vm.tables.active.predicate === 'forgingStatus.rating'" data-ng-class="{reverse: vm.tables.active.reverse}"></span></a></th>
+									<th class="right-padding-xs"><a href="" data-ng-click="vm.tables.active.setPredicate('productivity')" class="sort-order">Productivity <span data-ng-show="vm.tables.active.predicate === 'productivity'" data-ng-class="{reverse: vm.tables.active.reverse}"></span></a></th>
+									<th class="right-padding-s right-padding-m right-padding-l double hidden-xs"><a href="" data-ng-click="vm.tables.active.setPredicate('vote')" class="sort-order">Approval <span data-ng-show="vm.tables.active.predicate === 'vote'" data-ng-class="{reverse: vm.tables.active.reverse}"></span></a></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-if="!vm.activeDelegates">
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l" colspan="12">Waiting for delegates <i class="fa fa-spinner fa-spin"></i></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr data-ng-repeat="d in vm.activeDelegates | orderBy:$root.natural(vm.tables.active.predicate):vm.tables.active.reverse track by d.rate">
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l double">{{d.rate}}</td>
+									<td>
+										<a data-account-href="d" data-type="delegate">{{d.username}}</a>
+									</td>
+									<td class="hidden-xs hidden-md"><span class="text-muted">{{d.address}}</span></td>
+									<td class="hidden-xs hidden-sm">{{d.forged | currency:$root.currency:0}} <span class="text-muted">{{$root.currency.symbol}}</span></td>
+									<td class="hidden-xs hidden-sm">{{d.forgingTime | forgingTime}}</td>
+									<td><i forging-status="d.forgingStatus"></i></td>
+									<td class="right-padding-xs">{{d.productivity || 0}}%</td>
+									<td class="right-padding-s right-padding-m right-padding-l double hidden-xs"><span data-uib-tooltip="{{d.vote | currency:$root.currency:$root.decimalPlaces}} {{$root.currency.symbol}}">{{d.approval}}%</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</uib-tab>
+				<uib-tab data-ng-click="vm.getStandby(1)" class="standby-delegates-tab">
+					<uib-tab-heading><span class="glyphicon glyphicon-pause hidden-xs"></span> Standby<span class="hidden-xs"> Delegates</span> <span class="badge badge-delegate">{{vm.totalStandby || 0}}</span></uib-tab-heading>
+
+					<div class="table-responsive">
+						<table class="table table-hover table-striped standby-delegates">
+							<thead>
+								<tr>
+									<th class="left-padding-xs left-padding-s left-padding-m left-padding-l double"><a href="" data-ng-click="vm.tables.standby.setPredicate('rate')" class="sort-order">Rank <span data-ng-show="vm.tables.standby.predicate === 'rate'" data-ng-class="{reverse: vm.tables.standby.reverse}"></span></a></th>
+									<th class="right-padding-xs right-padding-s"><a href="" data-ng-click="vm.tables.standby.setPredicate('username')" class="sort-order">Name <span data-ng-show="vm.tables.standby.predicate === 'username'" data-ng-class="{reverse: vm.tables.standby.reverse}"></span></a></th>
+									<th class="hidden-xs"><a href="" data-ng-click="vm.tables.standby.setPredicate('address')" class="sort-order">Address <span data-ng-show="vm.tables.standby.predicate === 'address'" data-ng-class="{reverse: vm.tables.standby.reverse}"></span></a></th>
+									<th class="hidden-xs"><a href="" data-ng-click="vm.tables.standby.setPredicate('productivity')" class="sort-order">Productivity <span data-ng-show="vm.tables.standby.predicate === 'productivity'" data-ng-class="{reverse: vm.tables.standby.reverse}"></span></a></th>
+									<th class="right-padding-s right-padding-m right-padding-l double hidden-xs"><a href="" data-ng-click="vm.tables.standby.setPredicate('vote')" class="sort-order">Approval <span data-ng-show="vm.tables.standby.predicate === 'vote'" data-ng-class="{reverse: vm.tables.standby.reverse}"></span></a></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-if="!vm.standbyDelegates">
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l" colspan="12">Waiting for delegates <i class="fa fa-spinner fa-spin"></i></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr data-ng-repeat='d in vm.standbyDelegates | orderBy:$root.natural(vm.tables.standby.predicate):vm.tables.standby.reverse track by d.rate'>
+									<td class="left-padding-xs left-padding-s left-padding-m left-padding-l double">{{d.rate}}</td>
+									<td class="right-padding-xs">
+										<a data-account-href="d" data-type="delegate">{{d.username}}</a>
+									</td>
+									<td class="hidden-xs"><span class="text-muted">{{d.address}}</span></td>
+									<td class="hidden-xs">{{d.productivity || 0}}%</td>
+									<td class="right-padding-s right-padding-m right-padding-l double hidden-xs"><span data-uib-tooltip="{{d.vote | currency:$root.currency:$root.decimalPlaces}} {{$root.currency.symbol}}">{{d.approval}}%</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="paginator" aria-label="Less/More Transactions" data-ng-if="vm.pagination.more || vm.pagination.before">
+						<div class="btn-group" role="group">
+							<button class="btn btn-default less-button bordered-button" data-ng-click="vm.getStandby(vm.pagination.previousPage)" data-ng-disabled="!vm.pagination.before">Previous page</button>
+							<button class="btn btn-default more-button bordered-button" data-ng-click="vm.getStandby(vm.pagination.nextPage)"data-ng-disabled="!vm.pagination.more">Next page</button>
+						</div>
+					</div>
+				</uib-tab>
+				<uib-tab>
+					<uib-tab-heading><span class="glyphicon glyphicon-asterisk"></span> <span class="hidden-xs">Latest updates</span></uib-tab-heading>
+					<div class="row latest-updates">
+						<div class="col-md-6">
+							<div class="table-responsive">
+								<p class="small-title">Latest votes</p>
+								<table class="table table-condensed votes inner">
+									<thead>
+										<tr>
+											<th>Voter</th>
+											<th class="hidden-xs">Transaction</th>
+											<th>Time</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-ng-if="!vm.votes">
+											<td class="left-padding-xs left-padding-s left-padding-l" colspan="4">Waiting for votes <i class="fa fa-spinner fa-spin"></i></td>
+										</tr>
+									</tbody>
+									<tbody>
+										<tr data-ng-repeat='v in vm.votes track by $index'>
+											<td class="voter col-xs-6">
+												<a data-account-href="v" data-type="sender" data-ng-if="v.senderId && !v.delegate.username">{{v.senderId}}</a>
+												<a data-account-href="v.delegate" data-type="delegate" data-ng-if="v.delegate.username">{{v.delegate.username}}</a>
+											</td>
+											<td class="tx hidden-xs">
+												<a class="ellipsis" data-ng-href="/tx/{{v.id}}">{{v.id | middleEllipsis:12}}</a>
+											</td>
+											<td class="time-ago col-xs-3">
+												<span class="text-muted">{{v.timestamp | timeAgo}}</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="table-responsive">
+								<p class="small-title">Newest delegates</p>
+								<table class="table table-condensed registrations inner">
+									<thead>
+										<tr>
+											<th>Delegate</th>
+											<th class="hidden-xs">Transaction</th>
+											<th>Time</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-ng-if="!vm.registrations">
+											<td colspan="4">Waiting for registrations <i class="fa fa-spinner fa-spin"></i></td>
+										</tr>
+									</tbody>
+									<tbody>
+										<tr data-ng-repeat='r in vm.registrations track by $index'>
+											<td class="delegate col-xs-6">
+												<a data-account-href="r.delegate" data-type="delegate">{{r.delegate.username}}</a>
+											</td>
+											<td class="tx hidden-xs">
+												<a class="ellipsis" data-ng-href="/tx/{{r.id}}">{{r.id | middleEllipsis:12}}</a>
+											</td>
+											<td class="time-ago col-xs-3">
+												<span class="text-muted">{{r.timestamp | timeAgo}}</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</uib-tab>
+			</uib-tabset>
+		</div>
+	</div>
+</div>
