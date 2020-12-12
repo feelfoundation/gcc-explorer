@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+
+  gcc-explorer:
+    depends_on:
+      - feel
+    networks:
+      - feel
