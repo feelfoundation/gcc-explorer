@@ -1,0 +1,13 @@
+version: "3"
+# Add your custom configuration here.
+# See README.md for examples.
+services:
+
+  feel:
+    ports:
+    - ${ENV_FEEL_HTTP_PORT}:${ENV_FEEL_HTTP_PORT}
+    - ${ENV_FEEL_WS_PORT}:${ENV_FEEL_WS_PORT}
+
+  db:
+    ports:
+      - 5432:5432
