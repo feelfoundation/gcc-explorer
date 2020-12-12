@@ -6,7 +6,7 @@ GCC Explorer is a blockchain explorer designed for interaction with GCC network.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
-Feel Explorer is a feature-rich single page browser application with following functionalities:
+GCC Explorer is a feature-rich single page browser application with following functionalities:
 
 - [Transaction browser](http://gcce.feel.surf/txs/)
   - Shows transactions with their details stored in the blockchain
