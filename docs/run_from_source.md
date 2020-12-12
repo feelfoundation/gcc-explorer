@@ -65,7 +65,7 @@ You can configure the application by setting the following variables manually an
 - REDIS_PORT=6379              # Redis port
 - REDIS_DB=0                   # Redis database number
 ```
-> The default `config.js` file contains all of the configuration settings for Feel Explorer. These options can be modified according to comments included in configuration file.
+> The default `config.js` file contains all of the configuration settings for GCC Explorer. These options can be modified according to comments included in configuration file.
 
 ### Frontend source code file watch
 
