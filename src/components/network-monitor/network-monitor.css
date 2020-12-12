@@ -1,0 +1,268 @@
+/*
+ * feelfoundation/gcc-explorer
+ * Copyright © 2018 Feel Foundation
+ *
+ * See the LICENSE file at the top-level directory of this distribution
+ * for licensing information.
+ *
+ * Unless otherwise agreed in a custom licensing agreement with the Feel Foundation,
+ * no part of this software, including this file, may be copied, modified,
+ * propagated, or distributed except according to the terms contained in the
+ * LICENSE file.
+ *
+ * Removal or modification of this copyright notice is prohibited.
+ *
+ */
+.big-details span.connected-peers {
+  font-weight: 700;
+}
+
+.os-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.os-darwin {
+  background-image: url('../../assets/img/os/darwin.png');
+}
+
+.os-linux {
+  background-image: url('../../assets/img/os/linux.png');
+}
+
+.os-win {
+  background-image: url('../../assets/img/os/win.png');
+}
+
+.os-freebsd {
+  background-image: url('../../assets/img/os/freebsd.png');
+}
+
+.os-unknown {
+  background-image: url('../../assets/img/os/unknown.png');
+}
+
+#map {
+  width: 100%;
+  height: 368px;
+  position: relative;
+	border-radius:6px;
+	border: lightgray 1px solid;
+	margin-bottom: 24px;
+}
+
+#map .leaflet-popup-content p,
+#map .leaflet-popup-content span {
+  margin: 0;
+  padding: 0;
+}
+
+#map .leaflet-popup-content p.ip {
+  font-weight: bold;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #393C3E;
+}
+
+#map .leaflet-popup-content span.label {
+  display: inline-block;
+  width: 50px;
+  text-align: left;
+  color: #393C3E;
+}
+
+div.platforms .os-icon {
+  width: 38px;
+  height: 38px;
+  line-height: 50px;
+  background-size: 38px 38px;
+}
+
+div.platforms span.linux-counter {
+  color: #d23211;
+}
+
+div.platforms span.freebsd-counter {
+  color: #ff3400;
+}
+
+div.platforms,
+div.versions,
+div.heights {
+  text-align: center;
+  min-height: 58px;
+}
+
+div.platforms div.platform,
+div.versions div.version,
+div.heights div.height {
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+div.platforms div.platform .details-wrapper,
+div.versions div.version .details-wrapper,
+div.heights div.height .details-wrapper {
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 32px;
+  background: #f1f1f1;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+div.platforms div.platform .main-info,
+div.versions div.version .main-info,
+div.heights div.height .main-info {
+  border-radius: 10px;
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 3px;
+  vertical-align: middle;
+}
+div.platforms div.platform .main-info.best,
+div.versions div.version .main-info.best,
+div.heights div.height .main-info.best {
+  color: #2dcd2d;
+}
+
+div.platforms div.platform .counter,
+div.versions div.version .counter,
+div.heights div.height .counter {
+  padding: 3px;
+  border-radius: 10px;
+  background-color: #E8E8E9;
+  display: inline-block;
+  min-width: 50px;
+  height: 50px;
+  padding-top: 12px;
+  line-height: 38px;
+  vertical-align: middle;
+  position: relative;
+}
+
+div.platforms div.platform .counter:before,
+div.versions div.version .counter:before,
+div.heights div.height .counter:before {
+  font-size: 11px;
+  color: #999;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  line-height: 14px;
+  width: 100%;
+  text-align: center;
+}
+
+div.platforms span.counter.peers:before,
+div.versions span.counter.peers:before,
+div.heights span.counter.peers:before {
+  content: 'Peers';
+}
+div.heights span.counter.percetage:before {
+  content: 'Overall';
+}
+
+@media (max-width: 1200px) {
+  div.versions div.version {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  div.platforms div.platform {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  div.platforms span.counter,
+  div.heights span.counter,
+  div.versions span.counter {
+    display: block;
+  }
+
+  div.versions span.version-num {
+    margin-bottom: 5px;
+  }
+  div.heights span.height-num {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 991px) {
+  div.platforms div.platform {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.peers .tab-content {
+  padding-top: 1em;
+}
+
+.peers td {
+  overflow: hidden;
+}
+
+.peers td .hostname {
+  max-width: 250px;
+}
+
+@media (max-width: 991px) {
+	.peers td .hostname {
+		max-width: 100px;
+	}
+}
+
+.peers td .os-icon {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  display: inline-block;
+  background-size: 24px 24px;
+}
+
+.peers .peer-state:before {
+  font-size: 22px;
+  font-family: "Glyphicons Halflings";
+}
+
+.peers .state-2:before {
+  content: "\E084";
+  color: #7CB342;
+}
+
+.peers .state-1:before {
+  content: "\E083";
+  color: #5f696e;
+}
+
+.peers td .broadhash {
+  max-width: 355px;
+}
+
+div.stats > div {
+	padding: 3px;
+}
+
+div.row.stats {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+div.row.stats div {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .big-info {
+    padding-top: 0px;
+		padding-bottom: 24px;
+	}
+
+	.big-info p.big-details {
+		font-weight: 200;
+		font-size: 18px;
+		line-height: 32px;
+	}
+}
