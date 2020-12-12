@@ -1,0 +1,141 @@
+/*
+ * feelfoundation/gcc-explorer
+ * Copyright © 2018 Feel Foundation
+ *
+ * See the LICENSE file at the top-level directory of this distribution
+ * for licensing information.
+ *
+ * Unless otherwise agreed in a custom licensing agreement with the Feel Foundation,
+ * no part of this software, including this file, may be copied, modified,
+ * propagated, or distributed except according to the terms contained in the
+ * LICENSE file.
+ *
+ * Removal or modification of this copyright notice is prohibited.
+ *
+ */
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:hover,
+.nav-pills>li.active>a:focus {
+  color: #fff;
+  background-color: #393C3E;
+}
+
+.nav-pills>li>a,
+.nav-pills>li>a:hover,
+.nav-pills>li>a:focus {
+  color: #393C3E;
+  background-color: white;
+}
+
+.tab-content {
+  padding-top: 20px;
+}
+
+.big-details span.total-delegates {
+  font-weight: 700;
+}
+
+.forging-total {
+  color: white;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-radius: 4px;
+}
+
+.forging-total.grey {
+  background-color: #3c5068;
+}
+
+.forging-total.green {
+  background-color: #0077bd;
+}
+
+.forging-total.orange {
+  background-color: #ff6236;
+}
+
+.forging-total.red {
+  background-color: #c80039;
+}
+
+.forging-status {
+  font-size: 18px;
+  color: #d3d7cf;
+}
+
+.tooltip span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.tooltip-grey .tooltip-inner {
+  background-color: #3c5068 !important;
+}
+
+.tooltip-grey.left .tooltip-arrow {
+  border-left-color: #3c5068;
+}
+
+.forging-status.green {
+  color: #008722;
+}
+
+.tooltip-green .tooltip-inner {
+  background-color: #008722 !important;
+}
+
+.tooltip-green.left .tooltip-arrow {
+  border-left-color: #008722;
+}
+
+.forging-status.orange {
+  color: #ff6236;
+}
+
+.tooltip-orange .tooltip-inner {
+  background-color: #ff6236 !important;
+}
+
+.tooltip-orange.left .tooltip-arrow {
+  border-left-color:  #ff6236;
+}
+
+.forging-status.red {
+  color: #c80039;
+}
+
+.tooltip-red .tooltip-inner {
+  background-color: #c80039;
+}
+
+.tooltip-red.left .tooltip-arrow {
+  border-left-color:  #c80039;
+}
+
+
+@media (max-width: 991px) {
+  .forging-totals {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .forging-total {
+    margin-left: 10px;
+    margin-right: 10px;
+    min-height: 110px;
+  }
+}
+
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .forging-totals {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .forging-total {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
